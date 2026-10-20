@@ -16,7 +16,7 @@ Open `http://localhost:4173`. The page has no build step or runtime dependencies
 
 - `assets/` holds the originals from the supplied build kit and reference screenshots. The source ZIP is in the parent `assets/` folder.
 - `julington-logo.png` and `practice.jpg` originated from [Julington Dental](https://julingtondental.com/).
-- The three `testimonial-*.png` video thumbnails, three `review-*.png` source screenshots, and `julington-map.png` were supplied with the mockup.
+- The three `testimonial-*.png` video thumbnails and `julington-map.png` were supplied with the mockup. Review cards retain excerpts with first name and last initial; the original review screenshots are not stored in this repository.
 - `cleaning.png`, `implants.png`, `crowns.png`, `aligners.png`, and `dentures.png` are supplied AI-generated concept imagery. Their visually matched JPEG copies in `dist/assets/` are compressed at quality 88 for delivery.
 - Review card excerpts use words visible in the supplied Google review screenshots. Search results did not independently confirm that the reviews remain published. Recheck Google and get Julington Dental's approval before an official public launch.
 - The patient video URLs and service links were cross-checked against Julington Dental's [testimonials](https://julingtondental.com/testimonials/) and [services](https://julingtondental.com/services/) pages. The directions link is the Google Maps URL linked from Julington Dental's official footer.
