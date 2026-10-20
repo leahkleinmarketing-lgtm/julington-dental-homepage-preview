@@ -27,4 +27,4 @@ The visible concept label must remain until Julington Dental approves a producti
 
 The GitHub Pages workflow publishes `dist/` when `main` is pushed. In repository **Settings → Pages**, select **GitHub Actions** as the source if Pages is not already configured.
 
-Staging URL: pending a successful deployment and live check. Use the confirmed live URL for the proposal QR code.
+GitHub Pages preview: https://leahkleinmarketing-lgtm.github.io/julington-dental-homepage-preview/
