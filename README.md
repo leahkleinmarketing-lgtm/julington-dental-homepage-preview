@@ -25,4 +25,6 @@ Open `http://localhost:4173`. The page has no build step or runtime dependencies
 
 The visible concept label must remain until Julington Dental approves a production launch. The cleaning and four service images are illustrative; Julington Dental should approve them before official use. Appointment buttons point to the [official contact page](https://julingtondental.com/contact/).
 
-Staging URL: pending deployment.
+The GitHub Pages workflow publishes `dist/` when `main` is pushed. In repository **Settings → Pages**, select **GitHub Actions** as the source if Pages is not already configured.
+
+Staging URL: pending a successful deployment and live check. Use the confirmed live URL for the proposal QR code.
