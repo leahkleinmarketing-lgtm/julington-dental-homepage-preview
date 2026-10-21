@@ -6,7 +6,7 @@ Build a responsive homepage from `Julington_Dental_Homepage_Mockup.png`. Treat t
 
 - Keep Julington Dental’s existing black and gold identity, logo, and contact number. Use a soft cream background, restrained gold accents, and generous whitespace in place of large black page backgrounds.
 - Match the mockup’s section order: header, brand-led hero with the real practice photo, three service groups, practice introduction with a cleaning image, four featured services, patient video stories, written patient reviews, location map, appointment call to action, footer.
-- Recreate the three gold icons and labels under the hero: **Preventive Dentistry** (cleanings, exams, fluoride), **Restorative Care** (implants, crowns, dentures), and **Other Ways to Thrive** (cosmetic dentistry, sleep apnea, TMJ). Link each term to a relevant, verified service page. Avoid keyword stuffing.
+- Recreate the three gold icons and labels under the hero: **Preventive Dentistry** (cleanings, exams, fluoride), **Restorative Care** (implants, crowns, dentures), and **Other Ways to Thrive** (cosmetic dentistry, sleep apnea, TMJ). Link terms only to matching sections built on the concept page; show other terms as plain text. Avoid keyword stuffing.
 - Keep the hero short for mobile: “Smile Brighter with Julington Dental,” “General dentistry in St. Johns, FL,” and “Preventive, restorative and cosmetic care.” Do not restore the long introductory paragraph.
 - Preserve the current homepage’s core information. Feature Dental Implants, Same-Day Crowns, Clear Aligners, and Dentures. Cross-check final service copy and links against `https://julingtondental.com/` and its service pages.
 - Replace the blog area with patient stories and reviews. Use the supplied screenshots of Tim, Jane, and Barbara and Jonathan as video thumbnails. Their names are already in the screenshots, so do not add duplicate captions. Verify each video URL before linking.
@@ -19,7 +19,7 @@ Build a responsive homepage from `Julington_Dental_Homepage_Mockup.png`. Treat t
 
 - Make the layout responsive for desktop, tablet, and phone. On phones, stack the three service groups, service cards, reviews, and map, and make the appointment button easy to tap.
 - Use semantic headings, descriptive image alt text, visible keyboard focus, sufficient color contrast, and a reduced-motion friendly design.
-- Link appointment buttons to Julington Dental’s official contact page, `https://julingtondental.com/contact/`, until a new scheduling destination is approved. Do not add a patient intake form to the concept preview.
+- Link appointment buttons to the concept's contact section, which includes the practice phone number. Do not add a patient intake form to the concept preview.
 - Make navigation, service links, phone links, directions, and video links functional. Verify every destination before deployment.
 - Keep assets local in the repository. Optimize images for web delivery without changing their appearance significantly.
 - Add a short README with local run instructions, asset sources, and the deployment URL once published.
