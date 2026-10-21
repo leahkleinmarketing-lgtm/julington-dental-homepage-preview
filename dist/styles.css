@@ -4,14 +4,14 @@
 /* Narrow-screen navigation */
 .site-header{position:relative;z-index:20}
 .menu-toggle,.site-header nav .mobile-call{display:none}
-@media(max-width:780px){
+@media(max-width:960px){
   .header-inner{flex-wrap:nowrap;min-height:80px;padding-block:12px}
   .header-actions{display:none}
-  .menu-toggle{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:94px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);font:700 13px Arial,Helvetica,sans-serif;cursor:pointer}
+  .menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;min-width:48px;min-height:48px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);font:700 13px Arial,Helvetica,sans-serif;cursor:pointer}
   .menu-toggle:hover{background:var(--sand)}
   .menu-toggle:focus-visible{outline:3px solid #a67c00;outline-offset:3px}
   .menu-icon{display:grid;gap:4px}
-  .menu-icon span{display:block;width:20px;height:2px;border-radius:2px;background:currentColor}
+  .menu-icon span{display:block;width:22px;height:2px;border-radius:2px;background:currentColor}
   .menu-toggle[aria-expanded="true"] .menu-icon span:first-child{transform:translateY(6px) rotate(45deg)}
   .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2){opacity:0}
   .menu-toggle[aria-expanded="true"] .menu-icon span:last-child{transform:translateY(-6px) rotate(-45deg)}

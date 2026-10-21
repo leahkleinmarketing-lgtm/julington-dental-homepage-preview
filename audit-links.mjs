@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 const html = await readFile('dist/index.html', 'utf8');
 const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
 const links = [...html.matchAll(/<a\b[^>]*\bhref="([^"]*)"[^>]*>/g)];
-const assets = [...html.matchAll(/<(?:img|link|script)\b[^>]*(?:src|href)="(assets\/[^"]+|styles\.css|menu\.js)"/g)];
+const assets = [...html.matchAll(/<(?:img|link|script)\b[^>]*(?:src|href)="(assets\/[^"]+|(?:styles\.css|menu\.js)(?:\?[^\"]+)?)"/g)];
 const errors = [];
 
 if (!/<button\b[^>]*\bclass="[^"]*\bpay\b[^"]*"[^>]*\bdisabled\b[^>]*>Pay Online<\/button>/.test(html)) {
@@ -28,7 +28,7 @@ for (const [, href] of links) {
 
 for (const [, asset] of assets) {
   try {
-    if (!(await stat(resolve('dist', asset))).isFile()) errors.push(`Missing asset: ${asset}`);
+    if (!(await stat(resolve('dist', asset.split('?')[0]))).isFile()) errors.push(`Missing asset: ${asset}`);
   } catch {
     errors.push(`Missing asset: ${asset}`);
   }

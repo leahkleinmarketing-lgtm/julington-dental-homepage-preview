@@ -13,7 +13,7 @@ node server.mjs
 Open `http://localhost:4173`. The page has no build step or runtime dependencies.
 
 Run `node audit-links.mjs` to check every page link, section target, and local asset before publishing.
-With Chrome installed and the local server running, run `node tests/menu-browser.mjs` to exercise the mobile menu at 375, 390, 430, 768, 820, and 1024 pixels, including keyboard behavior. Set `CHROME_PATH` if Chrome is installed elsewhere; set `TEST_URL` to test a published preview.
+With Chrome installed and the local server running, run `node tests/menu-browser.mjs` to exercise the mobile menu from 320 through 960 pixels and the desktop header at 1024 and 1280 pixels, including pointer and keyboard behavior. Set `CHROME_PATH` if Chrome is installed elsewhere; set `TEST_URL` to test a published preview.
 
 ## Assets and sources
 

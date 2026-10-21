@@ -3,14 +3,12 @@
   const nav = document.querySelector('#site-navigation');
   if (!button || !nav) return;
 
-  const mobile = window.matchMedia('(max-width: 780px)');
-  const label = button.querySelector('.menu-label');
+  const mobile = window.matchMedia('(max-width: 960px)');
   const isOpen = () => button.getAttribute('aria-expanded') === 'true';
 
   function setOpen(open) {
     button.setAttribute('aria-expanded', String(open));
     button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    label.textContent = open ? 'Close' : 'Menu';
     nav.toggleAttribute('data-open', open);
   }
 
@@ -30,4 +28,7 @@
     }
   });
   mobile.addEventListener('change', () => setOpen(false));
+  window.addEventListener('resize', () => {
+    if (!mobile.matches && isOpen()) setOpen(false);
+  });
 })();

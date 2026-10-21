@@ -67,7 +67,7 @@ try {
       const nav = document.querySelector('#site-navigation');
       return {
         width: innerWidth,
-        mobile: matchMedia('(max-width: 780px)').matches,
+        mobile: matchMedia('(max-width: 960px)').matches,
         toggle: getComputedStyle(toggle).display,
         nav: getComputedStyle(nav).display,
         expanded: toggle.getAttribute('aria-expanded'),
@@ -78,7 +78,7 @@ try {
     })()`);
   }
   async function viewport(width) {
-    await send('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 780 });
+    await send('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 960 });
     await send('Page.navigate', { url: `${site}?qa=${width}` });
     for (let attempt = 0; attempt < 100; attempt++) {
       if (await evaluate(`document.readyState === 'complete' && !!document.querySelector('.menu-toggle')`)) return;
@@ -90,16 +90,24 @@ try {
     const result = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
     await writeFile(join(screenshotDir, name), Buffer.from(result.data, 'base64'));
   }
+  async function tap(selector) {
+    const point = await evaluate(`(() => {
+      const rect = document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect();
+      return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+    })()`);
+    await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...point, button: 'left', clickCount: 1 });
+    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...point, button: 'left', clickCount: 1 });
+  }
 
   await send('Page.enable');
   await send('Runtime.enable');
   await send('Emulation.setFocusEmulationEnabled', { enabled: true });
-  for (const width of [375, 390, 430, 768, 820, 1024]) {
+  for (const width of [320, 375, 390, 430, 768, 820, 900, 960, 1024, 1280]) {
     await viewport(width);
     const state = await inspect();
     assert.equal(state.overflow, false, `Horizontal overflow at ${width}px`);
     assert.deepEqual(state.links.slice(0, 4), ['#about', '#services', '#reviews', '#contact']);
-    if (width <= 780) {
+    if (width <= 960) {
       assert.notEqual(state.toggle, 'none', `Menu button hidden at ${width}px`);
       assert.equal(state.nav, 'none', `Closed menu visible at ${width}px`);
     } else {
@@ -107,21 +115,25 @@ try {
       assert.notEqual(state.nav, 'none', `Desktop links hidden at ${width}px`);
     }
     if (width === 390) await screenshot('phone-closed.png');
+    if (width === 820) await screenshot('wide-phone-closed.png');
     if (width === 1024) await screenshot('desktop.png');
     console.log(`${width}px: toggle=${state.toggle}, nav=${state.nav}, overflow=${state.overflow}`);
   }
 
   await viewport(390);
-  await evaluate(`document.querySelector('.menu-toggle').click()`);
+  await tap('.menu-toggle');
   assert.equal((await inspect()).expanded, 'true');
   assert.notEqual((await inspect()).nav, 'none');
+  await tap('.menu-toggle');
+  assert.equal((await inspect()).expanded, 'false', 'Tapping the icon again must close the menu');
+  await tap('.menu-toggle');
   await screenshot('phone-open.png');
-  await evaluate(`document.querySelector('#site-navigation a[href="#services"]').click()`);
+  await tap('#site-navigation a[href="#services"]');
   assert.equal((await inspect()).expanded, 'false', 'Selecting a link must close the menu');
   assert.equal(await evaluate('location.hash'), '#services');
 
-  await evaluate(`document.querySelector('.menu-toggle').click()`);
-  await evaluate(`document.querySelector('main').dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))`);
+  await tap('.menu-toggle');
+  await tap('.hero-photo');
   assert.equal((await inspect()).expanded, 'false', 'Tapping outside must close the menu');
 
   await evaluate(`document.querySelector('.menu-toggle').focus()`);
@@ -141,19 +153,19 @@ try {
   assert.equal((await inspect()).expanded, 'true', 'Space must open the menu');
   await evaluate(`document.querySelector('.menu-toggle').click()`);
 
-  await viewport(768);
-  await evaluate(`document.querySelector('.menu-toggle').click()`);
+  await viewport(820);
+  await tap('.menu-toggle');
   assert.equal((await inspect()).expanded, 'true');
-  await screenshot('tablet-open.png');
-  await send('Emulation.setDeviceMetricsOverride', { width: 820, height: 900, deviceScaleFactor: 1, mobile: false });
+  await screenshot('wide-phone-open.png');
+  await send('Emulation.setDeviceMetricsOverride', { width: 1024, height: 900, deviceScaleFactor: 1, mobile: false });
   let resizeState;
   for (let attempt = 0; attempt < 20; attempt++) {
     resizeState = await inspect();
-    if (resizeState.width === 820 && resizeState.expanded === 'false') break;
+    if (resizeState.width === 1024 && resizeState.expanded === 'false') break;
     await new Promise((done) => setTimeout(done, 50));
   }
   assert.equal(resizeState.expanded, 'false', `Desktop resize must reset menu state: ${JSON.stringify(resizeState)}`);
-  console.log('Link, outside tap, Enter, Space, Tab, Escape, focus return, and resize checks passed.');
+  console.log('Pointer toggle, link, outside tap, Enter, Space, Tab, Escape, focus return, and resize checks passed.');
 } finally {
   socket?.close();
   chrome.kill();
