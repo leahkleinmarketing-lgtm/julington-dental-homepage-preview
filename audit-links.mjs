@@ -7,6 +7,11 @@ const links = [...html.matchAll(/<a\b[^>]*\bhref="([^"]*)"[^>]*>/g)];
 const assets = [...html.matchAll(/<(?:img|link)\b[^>]*(?:src|href)="(assets\/[^"]+|styles\.css)"/g)];
 const errors = [];
 
+if (!/<button\b[^>]*\bclass="[^"]*\bpay\b[^"]*"[^>]*\bdisabled\b[^>]*>Pay Online<\/button>/.test(html)) {
+  errors.push('Pay Online must be a disabled button without a link.');
+}
+if (/pay\.vynetrellis\.com/i.test(html)) errors.push('Live payment URL remains on the concept page.');
+
 for (const [, href] of links) {
   if (!href || href === '#') errors.push(`Dead link: ${href || '(empty)'}`);
   else if (/julingtondental\.com/i.test(href)) errors.push(`Existing-site link: ${href}`);

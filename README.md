@@ -25,7 +25,7 @@ Run `node audit-links.mjs` to check every page link, section target, and local a
 
 ## Launch notes
 
-The visible concept label must remain until Julington Dental approves a production launch. The cleaning and four service images are illustrative; Julington Dental should approve them before official use. Appointment buttons jump to the concept's contact section, where visitors can call the practice. Service details and dentist profiles that are not built yet appear as nonclickable text. The concept page does not link visitors to julingtondental.com.
+The visible concept label must remain until Julington Dental approves a production launch. The cleaning and four service images are illustrative; Julington Dental should approve them before official use. Appointment buttons jump to the concept's contact section, where visitors can call the practice. The Pay Online button is disabled in this preview. Service details and dentist profiles that are not built yet appear as nonclickable text. The concept page does not link visitors to julingtondental.com.
 
 The GitHub Pages workflow publishes `dist/` when `main` is pushed. In repository **Settings → Pages**, select **GitHub Actions** as the source if Pages is not already configured.
 
