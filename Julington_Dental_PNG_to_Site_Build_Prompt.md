@@ -17,7 +17,7 @@ Build a responsive homepage from `Julington_Dental_Homepage_Mockup.png`. Treat t
 
 ## Function and quality
 
-- Make the layout responsive for desktop, tablet, and phone. On phones, stack the three service groups, service cards, reviews, and map, and make the appointment button easy to tap.
+- Make the layout responsive for desktop, tablet, and phone. On narrow screens, use a keyboard-accessible hamburger menu beside the logo with the same navigation links; close it after selecting a link, tapping outside, or pressing Escape. On phones, stack the three service groups, service cards, reviews, and map, and make the appointment button easy to tap.
 - Use semantic headings, descriptive image alt text, visible keyboard focus, sufficient color contrast, and a reduced-motion friendly design.
 - Link appointment buttons to the concept's contact section, which includes the practice phone number. Do not add a patient intake form to the concept preview.
 - Make navigation, service links, phone links, directions, and video links functional. Verify every destination before deployment.

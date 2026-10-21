@@ -4,13 +4,20 @@ import { resolve } from 'node:path';
 const html = await readFile('dist/index.html', 'utf8');
 const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
 const links = [...html.matchAll(/<a\b[^>]*\bhref="([^"]*)"[^>]*>/g)];
-const assets = [...html.matchAll(/<(?:img|link)\b[^>]*(?:src|href)="(assets\/[^"]+|styles\.css)"/g)];
+const assets = [...html.matchAll(/<(?:img|link|script)\b[^>]*(?:src|href)="(assets\/[^"]+|styles\.css|menu\.js)"/g)];
 const errors = [];
 
 if (!/<button\b[^>]*\bclass="[^"]*\bpay\b[^"]*"[^>]*\bdisabled\b[^>]*>Pay Online<\/button>/.test(html)) {
   errors.push('Pay Online must be a disabled button without a link.');
 }
 if (/pay\.vynetrellis\.com/i.test(html)) errors.push('Live payment URL remains on the concept page.');
+if ((await readFile('menu.js', 'utf8')) !== (await readFile('dist/menu.js', 'utf8'))) {
+  errors.push('Published menu.js differs from its source.');
+}
+const mainNav = html.match(/<nav id="site-navigation"[^>]*>(.*?)<\/nav>/s)?.[1] ?? '';
+for (const target of ['#about', '#services', '#reviews', '#contact']) {
+  if (!mainNav.includes(`href="${target}"`)) errors.push(`Main navigation is missing ${target}`);
+}
 
 for (const [, href] of links) {
   if (!href || href === '#') errors.push(`Dead link: ${href || '(empty)'}`);

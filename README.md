@@ -1,6 +1,6 @@
 # Julington Dental homepage concept
 
-Static, responsive homepage concept prepared by Klein Marketing. The existing Julington Dental website is untouched. `dist/index.html` and `dist/styles.css` are the editable page source and the files published as the preview; there is no separate build output.
+Static, responsive homepage concept prepared by Klein Marketing. The existing Julington Dental website is untouched. `dist/index.html` and `dist/styles.css` are the editable page source and the files published as the preview; there is no separate build output. `menu.js` is the source for the identical published `dist/menu.js` copy.
 
 ## Run locally
 
@@ -13,6 +13,7 @@ node server.mjs
 Open `http://localhost:4173`. The page has no build step or runtime dependencies.
 
 Run `node audit-links.mjs` to check every page link, section target, and local asset before publishing.
+With Chrome installed and the local server running, run `node tests/menu-browser.mjs` to exercise the mobile menu at 375, 390, 430, 768, 820, and 1024 pixels, including keyboard behavior. Set `CHROME_PATH` if Chrome is installed elsewhere; set `TEST_URL` to test a published preview.
 
 ## Assets and sources
 
