@@ -18,6 +18,7 @@ Run `node audit-links.mjs` to check every page link, section target, and local a
 
 - `assets/` holds the originals from the supplied build kit and reference screenshots. The source ZIP is in the parent `assets/` folder.
 - `julington-logo.png` and `practice.jpg` originated from [Julington Dental](https://julingtondental.com/).
+- The hero displays the complete, unaltered `practice.jpg` image so the full sign and both people remain visible at all widths.
 - The three `testimonial-*.png` video thumbnails and `julington-map.png` were supplied with the mockup. Review cards retain excerpts with first name and last initial; the original review screenshots are not stored in this repository.
 - `cleaning.png`, `implants.png`, `crowns.png`, `aligners.png`, and `dentures.png` are supplied AI-generated concept imagery. Their visually matched JPEG copies in `dist/assets/` are compressed at quality 88 for delivery.
 - Review card excerpts use words visible in the supplied Google review screenshots. Search results did not independently confirm that the reviews remain published. Recheck Google and get Julington Dental's approval before an official public launch.

@@ -12,7 +12,7 @@ Build a responsive homepage from `Julington_Dental_Homepage_Mockup.png`. Treat t
 - Replace the blog area with patient stories and reviews. Use the supplied screenshots of Tim, Jane, and Barbara and Jonathan as video thumbnails. Their names are already in the screenshots, so do not add duplicate captions. Verify each video URL before linking.
 - Add three five-star review cards based on the supplied Google review screenshots. Display the reviewers as **Michelle R.**, **Jeff A.**, and **Mayelyn B.** Use only their actual supplied words. The mockup quotes are excerpts, not full reviews. Check current publication status and obtain practice approval before a public launch.
 - Use the supplied location screenshot in the concept. For the built site, use an accessible map or an image linked to a verified Google Maps directions URL. Keep the address beside it: 106 Julington Plaza Drive, Suite 6, St. Johns, FL 32259.
-- Use the supplied official logo and existing practice photo. The cleaning and service images are illustrative concept assets; ask Julington Dental to approve them before using them on an official site.
+- Use the supplied official logo and existing practice photo. Display the entire practice photo so the full Julington Dental sign and both people remain visible, without a caption overlay. The cleaning and service images are illustrative concept assets; ask Julington Dental to approve them before using them on an official site.
 - Keep a small visible label on the preview: “Design mockup prepared by Klein Marketing. Not the official Julington Dental website.” Remove that label only if Julington Dental approves a production launch.
 
 ## Function and quality
